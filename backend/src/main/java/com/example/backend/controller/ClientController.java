@@ -27,23 +27,23 @@ public class ClientController {
 
     @GetMapping
     public List<Client> getAllClients(){
-        return ClientService.getAllClients();
+        return clientService.getAllClients();
     }
 
     @GetMapping("{id}")
     public ResponseEntity<Client> getClientById(@PathVariable("id") long ClientId){
-        return new ResponseEntity<Client>(ClientService.getClientById(ClientId), HttpStatus.OK);
+        return new ResponseEntity<Client>(clientService.getClientById(ClientId), HttpStatus.OK);
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Client> updateClient(@PathVariable("id") long id
             ,@RequestBody Client Client){
-        return new ResponseEntity<Client>(ClientService.updateClient(Client, id), HttpStatus.OK);
+        return new ResponseEntity<Client>(clientService.updateClient(Client, id), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteClient(@PathVariable("id") long id){
-        ClientService.deleteClient(id);
+        clientService.deleteClient(id);
         return new ResponseEntity<String>("Client deleted successfully!.", HttpStatus.OK);
     }
 

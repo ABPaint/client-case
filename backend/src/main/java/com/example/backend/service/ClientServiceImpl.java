@@ -21,12 +21,12 @@ public class ClientServiceImpl implements ClientService {
     }
     @Override
     public List<Client> getAllClients() {
-        return ClientRepository.findAll();
+        return clientRepository.findAll();
     }
 
     @Override
     public Client getClientById(long id) {
-        return ClientRepository.findById(id).orElseThrow(() ->
+        return clientRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Client", "Id", id));
 
     }
@@ -35,14 +35,14 @@ public class ClientServiceImpl implements ClientService {
     public Client updateClient(Client Client, long id) {
 
         // we need to check whether Client with given id is exist in DB or not
-        Client existingClient = ClientRepository.findById(id).orElseThrow(
+        Client existingClient = clientRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Client", "Id", id));
 
         existingClient.setName(Client.getName());
         existingClient.setProjects(Client.getProjects());
         existingClient.setAgreements(Client.getAgreements());
         // save existing Client to DB
-        ClientRepository.save(existingClient);
+        clientRepository.save(existingClient);
         return existingClient;
     }
 
@@ -50,8 +50,8 @@ public class ClientServiceImpl implements ClientService {
     public void deleteClient(long id) {
 
         // check whether a Client exist in a DB or not
-        ClientRepository.findById(id).orElseThrow(() ->
+        clientRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Client", "Id", id));
-        ClientRepository.deleteById(id);
+        clientRepository.deleteById(id);
     }
 }
