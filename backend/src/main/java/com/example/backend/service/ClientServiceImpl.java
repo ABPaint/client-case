@@ -26,32 +26,26 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client getClientById(long id) {
-        return clientRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Client", "Id", id));
+        return  null; //clientRepository.findById(id).orElseThrow(() ->
+                //new ResourceNotFoundException("Client", "Id", id));
 
     }
 
     @Override
     public Client updateClient(Client Client, long id) {
-
-        // we need to check whether Client with given id is exist in DB or not
-        Client existingClient = clientRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Client", "Id", id));
-
-        existingClient.setName(Client.getName());
-        existingClient.setProjects(Client.getProjects());
-        existingClient.setAgreements(Client.getAgreements());
-        // save existing Client to DB
-        clientRepository.save(existingClient);
-        return existingClient;
+        //Client existingClient = clientRepository.findById(id).orElseThrow(
+        //        () -> new ResourceNotFoundException("Client", "Id", id));
+        //existingClient.setName(Client.getName());
+        //existingClient.setProjects(Client.getProjects());
+        //existingClient.setAgreements(Client.getAgreements());
+        //clientRepository.save(existingClient);
+        return null;//existingClient;
     }
 
     @Override
     public void deleteClient(long id) {
-
-        // check whether a Client exist in a DB or not
-        clientRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Client", "Id", id));
-        clientRepository.deleteById(id);
+        //clientRepository.findById(id).orElseThrow(() ->
+        //        new ResourceNotFoundException("Client", "Id", id));
+        //clientRepository.deleteById(id);
     }
 }
