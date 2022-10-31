@@ -1,2 +1,2 @@
 # client-case
-Project manager
+React project manager with rest API
